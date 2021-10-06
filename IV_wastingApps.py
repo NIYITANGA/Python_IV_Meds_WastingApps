@@ -20,8 +20,8 @@ def getrow(event):
 
 #Striped Treeview Rows with color
 
-    trv.tag_configure("evenrow", background='white', foreground='green')
-    trv.tag_configure("oddrow", background='green', foreground='white')
+    
+    
 
 
 count = 1
@@ -33,11 +33,15 @@ def update_wastedItemsList():
 
    if i % 2 == 0:
 
-        trv.insert(parent='', index='end' , text="", values= (count, ent2.get(), ent3.get(), ent4.get(), ent5.get()), tags=('evenrow',)) 
+       trv.tag_configure("evenrow", background='black', foreground='lightgrey')
+
+       trv.insert(parent='', index='end' , text="", values= (count, ent2.get(), ent3.get(), ent4.get(), ent5.get()), tags=('evenrow',)) 
     
    else:
 
-          trv.insert(parent='', index='end' , text="", values= (count, ent2.get(), ent3.get(), ent4.get(), ent5.get()), tags=('oddrow',)) 
+       trv.tag_configure("oddrow", background='lightgrey', foreground='black')
+
+       trv.insert(parent='', index='end' , text="", values= (count, ent2.get(), ent3.get(), ent4.get(), ent5.get()), tags=('oddrow',)) 
     
 
    count = count + 1
