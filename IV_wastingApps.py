@@ -2,9 +2,14 @@
 
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox, filedialog
 from tkmacosx import Button as button
 from tkcalendar import DateEntry
+import csv
+import os
 
+
+WastedData = []
 
 # define command functions
 
@@ -33,13 +38,13 @@ def update_wastedItemsList():
 
    if i % 2 == 0:
 
-       trv.tag_configure("evenrow", background='black', foreground='lightgrey')
+       trv.tag_configure("evenrow", background='lightgrey', foreground='black')
 
        trv.insert(parent='', index='end' , text="", values= (count, ent2.get(), ent3.get(), ent4.get(), ent5.get()), tags=('evenrow',)) 
     
    else:
 
-       trv.tag_configure("oddrow", background='lightgrey', foreground='black')
+       trv.tag_configure("oddrow", background='white', foreground='black')
 
        trv.insert(parent='', index='end' , text="", values= (count, ent2.get(), ent3.get(), ent4.get(), ent5.get()), tags=('oddrow',)) 
     
@@ -47,11 +52,18 @@ def update_wastedItemsList():
    count = count + 1
 
 
-# Remove one selected item from the IV_Meds wasted list
+# Create a csv file
 
-def Remove_oneItemFromList():
-    D = trv.selection()[0]
-    trv.delete(D)
+def Export_To_CSVFile():
+    flname = filedialog.asksaveasfilename(initialdir=os.getcwd(), title="Save csv", filetypes=(("csv file", "*.csv"), ("All files", "*.*")))
+    with open(flname, mode='w') as Myfile:
+        exp_writer = csv.writer(Myfile, delimiter=',')
+        for row_id in trv.get_children():
+            row = trv.item(row_id) ['values']
+            exp_writer.writerow(row)
+
+        messagebox.showinfo("Wasted IV data", "Wasted IV data has been exported to "+os.path.basename(flname)+" successfully.")
+
 
 # Remove  more than one selected items from the IV_Meds wasted list
 
@@ -60,11 +72,31 @@ def Remove_moreItemFromList():
     for record in D:
         trv.delete(record)
     
+count = 1
+def ImportCSV():
 
-def delete_AllItem():
-    for record in trv.get_children():
-         trv.delete(record)
+    global count
+
+    flname = filedialog.askopenfilename(initialdir=os.getcwd(), title="Open csv", filetypes=(("csv file", "*.csv"), ("All files", "*.*")))
+    with open(flname) as Myfile:
+        csvread = csv.reader(Myfile, delimiter=',')
+        for row in csvread:
+            i=count
+            if i % 2 == 0:
+                trv.tag_configure("evenrow", background='lightgrey', foreground='black')
+                trv.insert("", 'end', values=row, tags=('evenrow',))
+
+            else:
+
+                trv.tag_configure("oddrow", background='white', foreground='black')
+                trv.insert("", 'end', values=row, tags=('oddrow',))
+
+
+        count = count + 1
     
+
+
+
 
 # create root window
 root = Tk()
@@ -111,8 +143,8 @@ wrapper2.grid(row=2, column=0)
 style = ttk.Style()
 trv = ttk.Treeview(wrapper1, columns=(1,2,3,4,5), show="headings", height=15)
 vsb = ttk.Scrollbar(wrapper1, orient="vertical", command=trv.yview)
-vsb.pack(side ='right', fill ='x')
-trv.configure(xscrollcommand=vsb.set)
+vsb.pack(side ='right', fill ='y')
+trv.configure(yscrollcommand=vsb.set)
 style.configure("Treeview.Heading", font=("Helvetica", 14))
 
 #Configure treeview colors
@@ -137,6 +169,9 @@ trv.heading(2, text="Drug's Name")
 trv.heading(3, text="Wasted Number")
 trv.heading(4, text="Wasted Money $")
 trv.heading(5, text="Date")
+
+
+
 
 
 # create Wasting IV_Meds Portal
@@ -188,14 +223,14 @@ ent5.grid(row=3, column=1, padx=5, pady=3)
 
 
 Add_btn = button(wrapper2, text="Waste an Item", command=update_wastedItemsList, bg='lightblue')
-Remove_oneItem = button(wrapper2, text="Remove selected Item", command=Remove_oneItemFromList, bg='lightblue')
+Export_toCSV = button(wrapper2, text="Export to CSV", command=Export_To_CSVFile, bg='lightblue')
 Remove_moreItem = button(wrapper2, text="Remove selected Items", command=Remove_moreItemFromList, bg='lightblue')
-DeleteAll_btn = button(wrapper2, text="Delete All Items wasted", command=delete_AllItem, bg='lightblue')
+ImportCVSfile = button(wrapper2, text="Import CSV File", command=ImportCSV, bg='lightblue')
 
 Add_btn.grid(row=4, column= 0, padx=5, pady=10)
-Remove_oneItem.grid(row=4, column= 1, padx=5, pady=10)
+Export_toCSV.grid(row=4, column= 1, padx=5, pady=10)
 Remove_moreItem.grid(row=5, column=0, padx=5, pady=3)
-DeleteAll_btn.grid(row=5, column=1, padx=5, pady=10)
+ImportCVSfile.grid(row=5, column=1, padx=5, pady=10)
 
 
 
