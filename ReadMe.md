@@ -22,11 +22,11 @@ Running python -m tkinter from the command line should open a window demonstrati
 
 - Home screen Layout without inputdata and output
 
-![Home screen Layout ](/Users/theo/Desktop/Screen Shot 2021-10-26 at 10.08.04 AM.png)
+![Home screen Layout ](/https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/Screen%20Shot%202021-10-26%20at%2010.08.04%20AM.png)
 
 - Home screen Layout with inputdata and output
 
-![Sreen with inputdata](/Users/theo/Desktop/Screen Shot 2021-10-20 at 1.47.01 PM.png)
+![Sreen with inputdata](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/Screen%20Shot%202021-10-23%20at%2011.23.46%20AM.png)
 
 ## Features Included
 
@@ -161,7 +161,7 @@ def ImportCSV():
 
 After the user is done exporting the data inside the treeview, there is confermation message that is poping up on the screen to conferm the name the user gave to the data file. Check the screenshot below;
 
-![Confermation message](/Users/theo/Desktop/Screen Shot 2021-10-26 at 12.29.52 PM.png)
+![Confermation message](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/Screen%20Shot%202021-10-26%20at%2012.29.52%20PM.png)
 
 
 
