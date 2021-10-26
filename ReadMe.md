@@ -151,7 +151,11 @@ def ImportCSV():
 
 
         count = count + 1
+        
+
+
 ```
+
 
 5. Fifth Feacture; `conversion tool`
 
@@ -159,7 +163,11 @@ After the user is done exporting the data inside the treeview, there is conferma
 
 ![Confermation message](/Users/theo/Desktop/Screen Shot 2021-10-26 at 12.29.52 PM.png)
 
+
+
 ## How to use this application
+
+
 
 To record and visualize the data of wasted IV_Meds, the user follow the following steps. 
  - First option;
