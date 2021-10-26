@@ -22,11 +22,11 @@ Running python -m tkinter from the command line should open a window demonstrati
 
 - Home screen Layout without inputdata and output
 
-![Home screen Layout ](/https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/Screen%20Shot%202021-10-26%20at%2010.08.04%20AM.png)
+![Home screen Layout ](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/withoutiinput.png)
 
 - Home screen Layout with inputdata and output
 
-![Sreen with inputdata](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/Screen%20Shot%202021-10-23%20at%2011.23.46%20AM.png)
+![Sreen with inputdata](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/withinput.png)
 
 ## Features Included
 
@@ -36,7 +36,7 @@ As you can see on the above screeshot, this application has been designed in a w
 
 Python function Code for waste an item;
 
-```count = 1
+`count = 1
 
  def update_wastedItemsList():
 
@@ -59,41 +59,43 @@ Python function Code for waste an item;
     
       
    count = count + 1
-   ```
+   
+`
  
 Python function code for remove selected items;
 
-```
+`
 def Remove_moreItemFromList():
     D = trv.selection()
     for record in D:
         trv.delete(record)
-        ```
+
+`
 
 
 Python function code for Restart;
 
-```
+`
 def restart_Apps():
     python = sys.executable
     os.execl(python, python, * sys.argv)
 
-```
+`
 
 Python code for Exit;
 
-```
+`
 Exit_btn = button(wrapper2, text="Exit", command=root.quit, bg='white')
-```
+`
 
 
 2. Second Feature : `Usage of the object's value of created class`
 
 One among the classes I created in this project is the `ttk.combobox`. This class has an object called `ent2`, this object has a value which is equal to `IV_Meds`. 
 
-```
+`
 ent2 = ttk.Combobox(wrapper2, value=IV_Meds, width=45, font=("Helvetica", 15))
-```
+`
 
 In the `def update_wastedItemsList()`, I used `ent2.get()` to get the value of object ent2 which is the Drug's name seen in the second column of the  the first Treeview(trv).
 
@@ -103,7 +105,7 @@ The `IV_Meds` is a list made of 10 drugs, and the user can select one drug when 
 
 Python code for the list `IV_Meds`;
 
-```
+`
 IV_Meds = [
     "vancomycin",
     "meropenem",
@@ -121,7 +123,7 @@ IV_Meds = [
     "Mitronidazole",
     "Meropenum"
 ]
-```
+`
 
 4. Forth Feature ; `Read data from an external file, CSV`
 
@@ -129,7 +131,7 @@ There is option for the user of this application to `import` the wasted IV_Meds 
 
 Python function code for import csv file;
 
-```
+`
 count = 1
 def ImportCSV():
 
@@ -154,19 +156,18 @@ def ImportCSV():
         
 
 
-```
+`
 
 
 5. Fifth Feacture; `conversion tool`
 
 After the user is done exporting the data inside the treeview, there is confermation message that is poping up on the screen to conferm the name the user gave to the data file. Check the screenshot below;
 
-![Confermation message](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/Screen%20Shot%202021-10-26%20at%2012.29.52%20PM.png)
+![Confermation message](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/Messagebox.png)
 
 
 
 ## How to use this application
-
 
 
 To record and visualize the data of wasted IV_Meds, the user follow the following steps. 
