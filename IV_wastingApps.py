@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox, filedialog
 from tkmacosx import Button as button
+import pandas as pd
 from tkcalendar import DateEntry
 import csv
 import sys
@@ -103,15 +104,14 @@ def Treeview_VS():
 
      for child in trv.get_children():
 
-      
-      
 
+         df = pd.DataFrame(trv.item(child)[str("values")])
           
        
 
-          trV.tag_configure("oddrow", background='black', foreground='white')
+         trV.tag_configure("oddrow", background='black', foreground='white')
           
-          trV.insert("",'end',text=trv.item(child)["text"],values=trv.item(child)["values"], tags=('oddrow',))
+         trV.insert("",'end',text=trv.item(child)["text"],values=df, tags=('oddrow',))
 
 
      
