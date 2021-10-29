@@ -36,7 +36,7 @@ As you can see on the above screeshot, this application has been designed in a w
 
 Python function Code for waste an item;
 
-`
+```
  count = 1
 
  def update_wastedItemsList():
@@ -47,47 +47,47 @@ Python function Code for waste an item;
 
    if i % 2 == 0:
 
-       trv.tag_configure("evenrow", background='lightgrey', foreground='black')
+      trv.tag_configure("evenrow", background='lightgrey', foreground='black')
        
        trv.insert(parent='', index='end' , text="", values= (count, ent2.get(), ent3.get(), ent4.get(), ent5.get()), tags=('evenrow',)) 
        
-       
+    
    else:
-
+      
        trv.tag_configure("oddrow", background='white', foreground='black')
        
        trv.insert(parent='', index='end' , text="", values= (count, ent2.get(), ent3.get(), ent4.get(), ent5.get()), tags=('oddrow',)) 
     
-      
-   count = count + 1
    
-`
+   count = count + 1
+
+```
  
 Python function code for remove selected items;
 
-`
+```
  def Remove_moreItemFromList():
     D = trv.selection()
     for record in D:
         trv.delete(record)
 
-`
+```
 
 
 Python function code for Restart;
 
-`
+```
  def restart_Apps():
     python = sys.executable
     os.execl(python, python, * sys.argv)
 
-`
+```
 
 Python code for Exit;
 
-`
+```
 Exit_btn = button(wrapper2, text="Exit", command=root.quit, bg='white')
-`
+```
 
 
 2. Second Feature : `Usage of the object's value of created class`
@@ -106,7 +106,7 @@ The `IV_Meds` is a list made of 10 drugs so far, and the user can select one dru
 
 Python code for the list `IV_Meds`;
 
-`
+```
  IV_Meds = [
     "vancomycin",
     "meropenem",
@@ -124,7 +124,7 @@ Python code for the list `IV_Meds`;
     "Mitronidazole",
     "Meropenum"
  ]
-`
+```
 
 4. Forth Feature ; `Read data from an external file, CSV`
 
@@ -132,7 +132,7 @@ There is option for the user of this application to `import` the wasted IV_Meds 
 
 Python function code for import csv file;
 
-`
+```
  count = 1
  def ImportCSV():
 
@@ -155,9 +155,7 @@ Python function code for import csv file;
 
         count = count + 1
         
-
-
-`
+```
 
 
 5. Fifth Feacture; `conversion tool`
