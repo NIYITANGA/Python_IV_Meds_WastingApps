@@ -36,7 +36,8 @@ As you can see on the above screeshot, this application has been designed in a w
 
 Python function Code for waste an item;
 
-`count = 1
+`
+ count = 1
 
  def update_wastedItemsList():
 
@@ -65,7 +66,7 @@ Python function Code for waste an item;
 Python function code for remove selected items;
 
 `
-def Remove_moreItemFromList():
+ def Remove_moreItemFromList():
     D = trv.selection()
     for record in D:
         trv.delete(record)
@@ -76,7 +77,7 @@ def Remove_moreItemFromList():
 Python function code for Restart;
 
 `
-def restart_Apps():
+ def restart_Apps():
     python = sys.executable
     os.execl(python, python, * sys.argv)
 
@@ -106,7 +107,7 @@ The `IV_Meds` is a list made of 10 drugs so far, and the user can select one dru
 Python code for the list `IV_Meds`;
 
 `
-IV_Meds = [
+ IV_Meds = [
     "vancomycin",
     "meropenem",
     "gentamicin",
@@ -122,7 +123,7 @@ IV_Meds = [
     "Zosyn",
     "Mitronidazole",
     "Meropenum"
-]
+ ]
 `
 
 4. Forth Feature ; `Read data from an external file, CSV`
@@ -132,8 +133,8 @@ There is option for the user of this application to `import` the wasted IV_Meds 
 Python function code for import csv file;
 
 `
-count = 1
-def ImportCSV():
+ count = 1
+ def ImportCSV():
 
     global count
 
