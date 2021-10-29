@@ -2,7 +2,7 @@
 
 IV_Drugs wasting Application (IWA) is a python class project done by a pharmacy Technician, who has a passion of developing applications that will help pharmacy to be more profitable. 
 
-IWA is going to belp pharmacy Manager to vilualize the  data of IV_Drugs wasted, and make evidences based decisions to save money that are being wasted.
+IWA is going to help pharmacy Manager to vilualize the  data of IV_Drugs wasted, and make evidences based decisions to save money that are being wasted.
 
 ## Link
 
@@ -101,7 +101,7 @@ In the `def update_wastedItemsList()`, I used `ent2.get()` to get the value of o
 
 3. Third Feature : `list`
 
-The `IV_Meds` is a list made of 10 drugs, and the user can select one drug when he/she is entering the data of the item that is going to be wasted
+The `IV_Meds` is a list made of 10 drugs so far, and the user can select one drug when he/she is entering the data of the item that is going to be wasted
 
 Python code for the list `IV_Meds`;
 
@@ -161,7 +161,7 @@ def ImportCSV():
 
 5. Fifth Feacture; `conversion tool`
 
-After the user is done exporting the data inside the treeview, there is confermation message that is poping up on the screen to conferm the name the user gave to the data file. Check the screenshot below;
+After the user is done exporting the data of the first treeview, there is confermation message that is poping up on the screen to conferm the name the user gave to the data file. Check the screenshot below;
 
 ![Confermation message](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/Messagebox.png)
 
@@ -172,11 +172,12 @@ After the user is done exporting the data inside the treeview, there is conferma
 
 To record and visualize the data of wasted IV_Meds, the user follow the following steps. 
  - First option;
-    . Select the IV_Med you want to wast by using the combobox, and enter the number of item you are going to waste with the amount of money $ the pharmacy is going to loose.
-    . After entering those data, the user can click on the `sort Treeview` button to visualize the top five expensive IV_Meds wasted on the right side.
-    . After visualisation, the user can export the recorded data into his/her local computer by cliking the `import to CSV` button.
+    . Select the IV_Med you want to waste by using the combobox, and enter the number of item you are going to waste with the amount of money $ the pharmacy is going to loose. Date is automaticaly populated in the `DateEntry`.
+    . After entering those data, the user can click on the `sort Treeview` button to visualize the top five expensive IV_Meds wasted inside  the right treeview (trV).
+    . After visualisation, the user can export (save) the IV_Meds wasted data into his/her local computer by cliking the `Export to CSV` button.
 
  - Second option;
-    .  Instead of wasting one item one by one, if the user has a csv.file of the IV_Meds that is ready to be visualized. He/she can  import this file into the treeview and start visualizing its contents by cliking the `sort Treeview` button.
+    . The IV_Meds wasted data saved on the local computer by the user as csv files, could be combine together ,after one or more months, in one csv file. Then, this one csv file could be imported inside the first treeview (trv) by clicking `import csv file` button. After that, the user can visualize the combined csv file by clicking on the `sort Treeview` button.
+    
 
-To start over, the user can click on the `restart` button. I the user want to close the application, a simple click on `Exit` perform the action.
+To start over, the user can click on the `restart` button. Otherwise, If the user want to close the application, a simple click on `Exit` button does the action.

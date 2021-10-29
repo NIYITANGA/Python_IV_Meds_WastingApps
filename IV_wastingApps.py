@@ -100,13 +100,16 @@ def ImportCSV():
 # Visualise the treeview contents
 
 
+
+
 def Treeview_VS():
+
 
      for child in trv.get_children():
 
 
          df = pd.DataFrame(trv.item(child)[str("values")])
-          
+         
        
 
          trV.tag_configure("oddrow", background='black', foreground='white')
@@ -114,7 +117,7 @@ def Treeview_VS():
          trV.insert("",'end',text=trv.item(child)["text"],values=df, tags=('oddrow',))
 
 
-     
+        
 
 # Initialize root as an object for Tk() class for creating a root window.
 
