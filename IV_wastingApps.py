@@ -3,9 +3,17 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox, filedialog
+from numpy import False_
 from tkmacosx import Button as button
 import pandas as pd
+from functools import reduce
 from tkcalendar import DateEntry
+import matplotlib
+matplotlib.use('TkAgg')
+
+from matplotlib.pyplot import plot
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 import csv
 import sys
 import os
@@ -100,22 +108,19 @@ def ImportCSV():
 # Visualise the treeview contents
 
 
-
-
 def Treeview_VS():
 
+ row_list = [] # creating an empty row list
+ columns = ('Index','DrugsName', 'NumberWasted','MoneyWasted','Date')
+ for child in trv.get_children():
+     row_list.append(trv.item(child)["values"]) 
+    
+     trv_df = pd.DataFrame(row_list, columns=columns) # creating dataframe from row list
+     
+     
+     Top5_Expensive_wasted = trv_df.nlargest(5, 'MoneyWasted') # getting the top 5 expensive
 
-     for child in trv.get_children():
-
-
-         df = pd.DataFrame(trv.item(child)[str("values")])
-         
-       
-
-         trV.tag_configure("oddrow", background='black', foreground='white')
-          
-         trV.insert("",'end',text=trv.item(child)["text"],values=df, tags=('oddrow',))
-
+     print(trv_df) # printig the dataframe in terminal
 
         
 
