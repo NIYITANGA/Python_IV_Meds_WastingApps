@@ -22,11 +22,15 @@ Running python -m tkinter from the command line should open a window demonstrati
 
 - Home screen Layout without inputdata and output
 
-![Home screen Layout ](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/withoutiinput.png)
+![Home screen Layout ](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/withoutinput.png)
 
 - Home screen Layout with inputdata and output
 
 ![Sreen with inputdata](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/withinput.png)
+
+- Screenshot showing how to select IV_Med that is goin to be wasted
+
+![Sreen with inputdata](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/ToselectIV.png)
 
 ## Features Included
 
@@ -98,11 +102,11 @@ One among the classes I created in this project is the `ttk.combobox`. This clas
 ent2 = ttk.Combobox(wrapper2, value=IV_Meds, width=45, font=("Helvetica", 15))
 `
 
-In the `def update_wastedItemsList()`, I used `ent2.get()` to get the value of object ent2 which is the Drug's name seen in the second column of the  the first Treeview(trv).
+In the `def update_wastedItemsList()`, I used `ent2.get()` to get the value of object ent2 which is the Drug's name seen in the second column of the  the Treeview(trv).
 
 3. Third Feature : `list`
 
-The `IV_Meds` is a list made of 10 drugs so far, and the user can select one drug when he/she is entering the data of the item that is going to be wasted
+The `IV_Meds` is a list made of 15 drugs so far, and the user can select one drug when he/she is entering the data of the item that is going to be wasted. Check the screenshot above.
 
 Python code for the list `IV_Meds`;
 
@@ -128,7 +132,7 @@ Python code for the list `IV_Meds`;
 
 4. Forth Feature ; `Read data from an external file, CSV`
 
-There is option for the user of this application to `import` the wasted IV_Meds recorded in the CSV file and populate those data in the treeview before being visualized.
+There is option for the user of this application to `import` the wasted IV_Meds recorded in the CSV file before the end of the month, and populate those data in the treeview before being visualized.
 
 Python function code for import csv file;
 
