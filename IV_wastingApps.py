@@ -1,19 +1,15 @@
+__Author__ = 'Theophile Niyitanga'
+
 # import tkinter and all its functions
 
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox, filedialog
-from numpy import False_
 from tkmacosx import Button as button
 import pandas as pd
-from functools import reduce
 from tkcalendar import DateEntry
-import matplotlib
-matplotlib.use('TkAgg')
-
-from matplotlib.pyplot import plot
+import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
 import csv
 import sys
 import os
@@ -33,8 +29,6 @@ def getrow(event):
 
 
 #Striped Treeview Rows with color
-
-    
 
 count = 1
 def update_wastedItemsList():
@@ -103,26 +97,41 @@ def ImportCSV():
         count = count + 1
     
 
-
-
 # Visualise the treeview contents
 
+row_list = [] # creating an empty row list
+columns = ('Index','DrugsName', 'NumberWasted','MoneyWasted','Date')
 
-def Treeview_VS():
 
- row_list = [] # creating an empty row list
- columns = ('Index','DrugsName', 'NumberWasted','MoneyWasted','Date')
- for child in trv.get_children():
-     row_list.append(trv.item(child)["values"]) 
-    
-     trv_df = pd.DataFrame(row_list, columns=columns) # creating dataframe from row list
-     
-     
-     Top5_Expensive_wasted = trv_df.nlargest(5, 'MoneyWasted') # getting the top 5 expensive
-
-     print(trv_df) # printig the dataframe in terminal
-
+def Treeview_VS(): # function to check the top 10 expensive IV_Meds wasted
+    for child in trv.get_children():
+        row_list.append(trv.item(child)["values"]) # creating a dictionary
+       
+        trv_df = pd.DataFrame(row_list, columns=columns) # creating dataframe from row list
         
+        trV_df = trv_df[trv_df.columns.difference(['Index'])] # exclude index column from a dataframe
+
+        Top10_Expensive_wasted = trV_df.nlargest(10, 'MoneyWasted') # getting the top 10 expensive
+        Plotdf = Top10_Expensive_wasted[['DrugsName', 'MoneyWasted']] # creating a dataframe made of two columns (DrungsName and MoneyWasted)
+       
+    print(Plotdf)
+    
+  # Creating Barchart
+    figure = plt.Figure(figsize=(10.2,11.3), dpi=70) 
+    ay = figure.add_subplot(111)
+    bar = FigureCanvasTkAgg(figure, root)
+    bar.get_tk_widget().grid(column=1, row=0)
+    Plotdf = Plotdf[['DrugsName', 'MoneyWasted']].groupby('DrugsName').sum()
+    Plotdf.plot(kind='barh', legend=True, ax=ay)
+    ay.set_title('Top10 IV_Meds wasted Vs. Money wasted')
+
+
+#Restart the application without closing the application windon
+
+def restart_Apps():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+
 
 # Initialize root as an object for Tk() class for creating a root window.
 
@@ -140,9 +149,9 @@ t5 = StringVar()
 
 #Title of GUI Window
 
-root.title("IV_WastingApps") 
+root.title("Copyright © 2021. IV_Drugs WastingApps") 
 
-# Specify the max size the window can exand to
+# Specify the max size the window
 
 root.geometry("1430x800")
 
@@ -150,12 +159,11 @@ root.geometry("1430x800")
 
 root.config(bg="grey")
 
-#Create left and right frames
+#Create left frame
 
 wrapper = LabelFrame(root, width=700)
 wrapper.grid(row=0, column=0)
-wrapper3 = LabelFrame(root, width=700)
-wrapper3.grid(row=0, column=1)
+
 
 #Create wrappers and labels in left_frame
 
@@ -163,13 +171,6 @@ wrapper1 = LabelFrame(wrapper, width=700, text="IV_Meds wasted list", bg="lightg
 wrapper1.grid(row=0, column=0)
 wrapper2 = LabelFrame(wrapper, text="Wasting IV_Meds Portal", bg="lightgrey", font=("Helvetica", 15))
 wrapper2.grid(row=2, column=0)
-
-#Create wrappers and labels in right_frame
-
-wrapper4 = LabelFrame(wrapper3, width=700, text="Top five highest IV_Meds wasted", bg="lightgrey", font=("Helvetica", 15))
-wrapper4.grid(row=0, column=1)
-wrapper5 = LabelFrame(wrapper3, width=700, height=496,text="Bar Chart", bg="lightgrey", font=("Helvetica", 15))
-wrapper5.grid(row=2, column=1)
 
 # create treeview inside the IV_MedS Wasted list wrapper
 
@@ -180,38 +181,12 @@ vsb.pack(side ='right', fill ='y')
 trv.configure(yscrollcommand=vsb.set)
 style.configure("Treeview.Heading", font=("Helvetica", 14))
 
-# create treeview inside the Top five highest IV_Meds wasted wrapper
-
-style = ttk.Style()
-trV = ttk.Treeview(wrapper4, columns=(1,2,3,4,5), show="headings", height=10)
-vsb = ttk.Scrollbar(wrapper4, orient="vertical", command=trV.yview)
-vsb.pack(side ='right', fill ='y')
-trV.configure(yscrollcommand=vsb.set)
-style.configure("Treeview.Heading", font=("Helvetica", 14))
-
-
-# create graph
-
-
-
-#Restart the application without closing the application windon
-
-def restart_Apps():
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
-
-
-
 
 #Configure left treeview colors
 
 style.configure("Treeview", background="lightblue", forgound="black", rowheight=25, fieldbackground="silver")
 trv.pack()
 
-#Configure right treeview colors
-
-style.configure("Treeview", background="lightblue", forgound="black", rowheight=25, fieldbackground="silver")
-trV.pack()
 
 #Change the color of selected row in treeview
 
@@ -230,20 +205,6 @@ trv.heading(2, text="Drug's Name")
 trv.heading(3, text="Wasted Number")
 trv.heading(4, text="Wasted Money $")
 trv.heading(5, text="Date")
-
-
-#Create striped row tags for right treeview
-trV.column("#1", anchor=CENTER, width=40)
-trV.column("#2", width=200)
-trV.column("#3", anchor=CENTER, width=140) 
-trV.column("#4", anchor=CENTER, width=140)
-trV.column("#5", anchor=CENTER, width=140)
-
-trV.heading(1, text="Index")
-trV.heading(2, text="Drug's Name")
-trV.heading(3, text="Wasted Number")
-trV.heading(4, text="Wasted Money $")
-trV.heading(5, text="Date")
 
 # create Wasting IV_Meds Portal
 
@@ -265,14 +226,12 @@ IV_Meds = [
     "Meropenum"
 ]
 
-
+# creating labels
 
 lbl2 = Label(wrapper2, text="Select Item to be wasted", height=3, bg="lightgrey", font=("Helvetica", 15))
 lbl2.grid(row=0, column=0, padx=5, pady=3)
 ent2 = ttk.Combobox(wrapper2, value=IV_Meds, width=45, font=("Helvetica", 15))
 ent2.grid(row=0, column=1, padx=14, pady=3)
-
-
 
 
 lbl3 = Label(wrapper2, text="Number to be wasted", bg="lightgrey", font=("Helvetica", 15))
@@ -291,13 +250,13 @@ lbl5.grid(row=3, column=0, padx=5, pady=3)
 ent5 = DateEntry(wrapper2, selectmode='day')
 ent5.grid(row=3, column=1, padx=5, pady=3)
 
-
+# creating buttons to command the application functions
 
 Add_btn = button(wrapper2, text="Waste an Item", command=update_wastedItemsList, bg='lightblue')
 Export_toCSV = button(wrapper2, text="Export to CSV", command=Export_To_CSVFile, bg='lightblue')
 Remove_moreItem = button(wrapper2, text="Remove selected Items", command=Remove_moreItemFromList, bg='lightblue')
 ImportCVSfile = button(wrapper2, text="Import CSV File", command=ImportCSV, bg='lightblue')
-Trv_Visualise = button(wrapper2, text="Sort treeview", command=Treeview_VS, bg='lightblue')
+Trv_Visualise = button(wrapper2, text="Check expensive IV_Meds Wasted", command=Treeview_VS, bg='lightblue')
 Exit_btn = button(wrapper2, text="Exit", command=root.quit, bg='white')
 Restart_btn = button(wrapper2, text="Restart", command=restart_Apps, bg='lightblue')
 
@@ -310,9 +269,6 @@ Restart_btn.grid(row=6, column= 1, padx=5, pady=10)
 Exit_btn.grid(row=7, columnspan=2)
 
 
-# create Wasting Bar Chart window
-
-lbl5 = Label(wrapper5, text=" Graph", height=3, bg="lightgrey", font=("Helvetica", 15))
-
-
+#closing the root window
 root.mainloop()
+

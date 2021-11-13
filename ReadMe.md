@@ -1,6 +1,6 @@
-# IV_Drugs wasting Apllication (IWA)
+# IV_Drugs wasting Application (IWA)
 
-IV_Drugs wasting Application (IWA) is a python class project done by a pharmacy Technician, who has a passion of developing applications that will help pharmacy to be more profitable. 
+IV_Drugs wasting Application (IWA) is a python class project done by a pharmacy Technician, who has a passion of developing applications that will make a difference in pharmacy business Intelligence. 
 
 IWA is going to help pharmacy Manager to vilualize the  data of IV_Drugs wasted, and make evidences based decisions to save money that are being wasted.
 
@@ -13,7 +13,7 @@ IWA is going to help pharmacy Manager to vilualize the  data of IV_Drugs wasted,
 - Python
 - Tkinter
 
-Tkinter are available on most Unix platforms, including macOS, as well as on Windows systems.
+Tkinter as a Graphical User Interface (GUI), is available on most Unix platforms, including macOS, as well as on Windows systems.
 
 Running python -m tkinter from the command line should open a window demonstrating a simple Tk interface, letting you know that tkinter is properly installed on your system.
 
