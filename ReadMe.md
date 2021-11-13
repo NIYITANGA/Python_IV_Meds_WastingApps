@@ -166,7 +166,7 @@ Python function code for import csv file;
 
 After the user is done exporting the data of the first treeview, there is confermation message that is poping up on the screen to conferm the name the user gave to the data file. Check the screenshot below;
 
-![Confermation message](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/Messagebox.png)
+![Confermation message](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/expmsage.png)
 
 
 
