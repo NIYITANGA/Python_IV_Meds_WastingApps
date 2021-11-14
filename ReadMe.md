@@ -34,9 +34,9 @@ Running python -m tkinter from the command line should open a window demonstrati
 
 ## Features Included
 
-1. First feature: `master loop console`
+**1. First feature: `master loop console`**
 
-As you can see on the above screeshot, this application has been designed in a way the user can repeatedly `waste an item`, `remove selected items`, `export to csv` and `import csv file`.  In additinal, the user can click on the `Restart` button to reflesh the apps and start new wasting activities. If the user want to close the application, there is possibility to do it with a simple clik on the `Exit` button.
+As you can see on the above screeshot, this application has been designed in a way the user can repeatedly **`waste an item`, `remove selected items`, `export to csv` and `import csv file`**.  In additinal, the user can click on the `Restart` button to reflesh the apps and start new wasting activities. If the user want to close the application, there is possibility to do it with a simple clik on the **`Exit`** button.
 
 Python function Code for waste an item;
 
@@ -94,7 +94,7 @@ Exit_btn = button(wrapper2, text="Exit", command=root.quit, bg='white')
 ```
 
 
-2. Second feature : `Usage of the object's value of created class`
+**2. Second feature : `Usage of the object's value of created class`**
 
 One among the classes I created in this project is the `ttk.combobox`. This class has an object called `ent2`, this object has a value which is equal to `IV_Meds`. 
 
@@ -104,7 +104,7 @@ ent2 = ttk.Combobox(wrapper2, value=IV_Meds, width=45, font=("Helvetica", 15))
 
 In the `def update_wastedItemsList()`, I used `ent2.get()` to get the value of object ent2 which is the Drug's name seen in the second column of the  the Treeview(trv).
 
-3. Third feature : `list`
+**3. Third feature : `list`**
 
 The `IV_Meds` is a list made of 15 drugs so far, and the user can select one drug when he/she is entering the data of the item that is going to be wasted. Check the screenshot above.
 
@@ -130,7 +130,7 @@ Python code for the list `IV_Meds`;
  ]
 ```
 
-4. Forth feature ; `Read data from an external file, CSV`
+**4. Forth feature ; `Read data from an external file, CSV`**
 
 There is option for the user of this application to `import` the wasted IV_Meds recorded in the CSV file before the end of the month, and populate those data in the treeview before being visualized.
 
@@ -162,31 +162,31 @@ Python function code for import csv file;
 ```
 
 
-5. Fifth feacture; `conversion tool`
+**5. Fifth feacture; `conversion tool`**
 
 After the user is done exporting the data of the first treeview, there is confermation message that is poping up on the screen to conferm the name the user gave to the data file. Check the screenshot below;
 
 ![Confermation message](https://github.com/NIYITANGA/Python_IV_Meds_WastingApps/blob/master/image/expmsage.png)
 
 
-6. Sixth feacture: `dictionary`
+**6. Sixth feacture: `dictionary`**
 
-To get the top 10 most expensive IV_meds from the all IV_meds wasted. I created a dictionary `row_list.append(trv.item(child)["values"])` from the treeview children. This dictionary was used to create a dataframe `trv_df = pd.DataFrame(row_list, columns=columns)` under the function `def Treeview_VS()`. Inside this function, I created a dataframe of the top 10 expensive IV_meds wasted; `Top10_Expensive_wasted = trv_df.nlargest(10, 'MoneyWasted') `. Then from this dataframe, I created another dataframe of two columns (DrungsName and MoneyWasted); `Plotdf = Top10_Expensive_wasted[['DrugsName', 'MoneyWasted']]`, which used to plot a barchart of the top 10 expensive IV_meds wasted.
+To get the top 10 most expensive IV_meds from the all IV_meds wasted. I created a dictionary `row_list.append(trv.item(child)["values"])` from the treeview children. This dictionary was used to create a dataframe `trv_df = pd.DataFrame(row_list, columns=columns)` under the function `def Treeview_VS()`. Inside this function, I created a dataframe of the top 10 expensive IV_meds wasted; `Top10_Expensive_wasted = trv_df.nlargest(10, 'MoneyWasted') `. Then from this dataframe, I created another dataframe of two columns (DrungsName and MoneyWasted); `Plotdf = Top10_Expensive_wasted[['DrugsName', 'MoneyWasted']]`, which used to plot the bar hart of the top 10 expensive IV_meds wasted.
 
-7. Seventh feacture: `visualize data in bar chart`
+**7. Seventh feacture: `visualize data in bar chart`**
 
-The users of this application can visualize the top10 most expensive IV_meds that were wasted during a certain period of time. For example, they can enter the data of the all IV_meds wasted during one month, or they can import the csv file of the all IV_meds wasted during x month. After having the data of the IV_meds wasted in the treeview, a simple click on the `Check expensive IV_Meds Wasted` buttom display the horizontal bar chart of the top 10 IV_meds wasted vs money wasted. This buttom is the one that was used to command the `def Treeview_VS()` function in the process of creating a dataframe `Plotdf`.
+The users of this application can visualize the top10 most expensive IV_meds that were wasted during a certain period of time. For example, they can enter the data of the all IV_meds wasted during one month, or they can import the csv file of the all IV_meds wasted during x month. After having the data of the IV_meds wasted in the treeview, a simple click on the `Check expensive IV_Meds Wasted` buttom display the horizontal bar chart of the top 10 IV_meds wasted vs money wasted. This buttom is the one that is used to command the `def Treeview_VS()` function in the process of creating a dataframe `Plotdf`.
 
 ## How to use this application
 
 
-To record and visualize the data of wasted IV_Meds, the user follow the following steps. 
- - First option;
-    . Select the IV_Med you want to waste by using the combobox, and enter the number of item you are going to waste with the amount of money $ the pharmacy is going to loose. Date is automaticaly populated in the `DateEntry`. After that, the user has to click on the `waste an item` button to complite the waste action. Before starting the visualisation, if the user finds one or more items with the wrong data in the treeview, he/she can select those items and click on `remove selected items` buttom to erase them from the data that are going to be visualized. When data are ready, the user can click on the `Check expensive IV_Meds Wasted` button to visualize the top ten expensive IV_Meds wasted on the left side.
+**To record and visualize the data of wasted IV_Meds, the user follow the following steps.**
+ - **First option;**
+    - Select the IV_Med you want to waste by using the combobox, and enter the number of item you are going to waste with the amount of money $ the pharmacy is going to loose. Date is automaticaly populated in the `DateEntry`. After that, the user has to click on the `waste an item` button to complite the waste action. Before starting the visualisation, if the user finds one or more items with the wrong data in the treeview, he/she can select those items and click on `remove selected items` buttom to erase them from the data that are going to be visualized. When data are ready, the user can click on the `Check expensive IV_Meds Wasted` button to visualize the top ten expensive IV_Meds wasted on the left side.
     . To keep the records, the user can export (save) the IV_Meds wasted data into his/her local computer by cliking the `Export to CSV` button.
 
- - Second option;
-    . The IV_Meds wasted data saved on the local computer by the user as csv files, could be combine together ,after one or more months, in one csv file. Then, this one csv file could be imported inside the treeview (trv) by clicking `import csv file` button. Then, the user can visualize the combined csv file by clicking on the `Check expensive IV_Meds Wasted` button.
+ - **Second option;**
+    - The IV_Meds wasted data saved on the local computer by the user as csv files, could be combine together ,after one or more months, in one csv file. Then, this one csv file could be imported inside the treeview (trv) by clicking `import csv file` button. Then, the user can visualize the combined csv file by clicking on the `Check expensive IV_Meds Wasted` button.
     
 
 To start over, the user can click on the `restart` button. Otherwise, If the user want to close the application, a simple click on `Exit` button does the action.
