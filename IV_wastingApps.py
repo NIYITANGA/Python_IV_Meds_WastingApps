@@ -105,25 +105,23 @@ columns = ('Index','DrugsName', 'NumberWasted','MoneyWasted','Date')
 
 def Treeview_VS(): # function to check the top 10 expensive IV_Meds wasted
     for child in trv.get_children():
-        row_list.append(trv.item(child)["values"]) # creating a dictionary
+        row_list.append(trv.item(child)["values"]) # creating a dictionary with list object in values
        
         trv_df = pd.DataFrame(row_list, columns=columns) # creating dataframe from row list
-        
-        trV_df = trv_df[trv_df.columns.difference(['Index'])] # exclude index column from a dataframe
 
-        Top10_Expensive_wasted = trV_df.nlargest(10, 'MoneyWasted') # getting the top 10 expensive
+        Top10_Expensive_wasted = trv_df.nlargest(10, 'MoneyWasted') # getting the top 10 expensive
         Plotdf = Top10_Expensive_wasted[['DrugsName', 'MoneyWasted']] # creating a dataframe made of two columns (DrungsName and MoneyWasted)
        
     print(Plotdf)
     
   # Creating Barchart
-    figure = plt.Figure(figsize=(10.2,11.3), dpi=70) 
-    ay = figure.add_subplot(111)
-    bar = FigureCanvasTkAgg(figure, root)
-    bar.get_tk_widget().grid(column=1, row=0)
+    figure = plt.Figure(figsize=(10.2,11.3), dpi=70) # giving bar chart figure dimension
+    ay= figure.add_subplot(111) # Adding axes to the figure
+    bar = FigureCanvasTkAgg(figure, root) # setting figure in the root window of the tkinter
+    bar.get_tk_widget().grid(column=1, row=0)# setting figure in the column 1 of the root window
     Plotdf = Plotdf[['DrugsName', 'MoneyWasted']].groupby('DrugsName').sum()
-    Plotdf.plot(kind='barh', legend=True, ax=ay)
-    ay.set_title('Top10 IV_Meds wasted Vs. Money wasted')
+    Plotdf.plot(kind='barh', legend=True, ax=ay)# plot the horizontal bar chart
+    ay.set_title('Top10 IV_Meds wasted Vs. Money wasted')# Giving a title to the barchart
 
 
 #Restart the application without closing the application windon
