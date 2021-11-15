@@ -11,11 +11,21 @@ IWA is going to help pharmacy Manager to vilualize the  data of IV_Drugs wasted,
 ## This application was build with
 
 - Python
-- Tkinter
 
-Tkinter as a Graphical User Interface (GUI), is available on most Unix platforms, including macOS, as well as on Windows systems.
+I used Tkinter as the de facto way in python to create Graphical User Interface (GUI) of this application. Tkinter is included with standard GNU/Linux, Microsoft Windows and macOS installs of Python.
 
-Running python -m tkinter from the command line should open a window demonstrating a simple Tk interface, letting you know that tkinter is properly installed on your system.
+To verify whether Tkinter is installed and ready to be loaded by Python, run the following code to test in a Python console:
+
+```
+> python
+
+>>> import tkinter
+>>> tkinter._test()
+
+```
+
+If Tkinter is installed and working correctly, a small popup window will appear. The first line at the top of the window should state: This is Tcl/Tk version 8.6. For more detail about python and tkinter, [click here.](https://www.activestate.com/resources/quick-reads/how-to-install-tkinter-in-windows/)
+
 
 
 ## Screenshots
