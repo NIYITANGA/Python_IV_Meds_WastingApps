@@ -27,6 +27,52 @@ To verify whether Tkinter is installed and ready to be loaded by Python, run the
 If Tkinter is installed and working correctly, a small popup window will appear. The first line at the top of the window should state: This is Tcl/Tk version 8.6. For more detail about python and tkinter, [click here.](https://www.activestate.com/resources/quick-reads/how-to-install-tkinter-in-windows/)
 
 
+Generally, we import the tkinter library in the environment by using **`from tkinter import *`**  command.
+
+The significance of **`import *`**  represents all the functions and built-in modules in the tkinter library. By importing all the functions and methods, we can use the inbuilt functions or methods in a particular application without importing them implicitly.
+
+Tkinter also provides the ttk package that is used to style the widget's property and its look and feel. In order to use the ttk package, we have to import it by typing the following code −;
+
+```
+from tkinter import ttk
+
+```
+Since this Tkinter application deals wilth the file system, I have to import **`messagebox`**  and **`filedialog`**  to provide a dialog that allows file selections. Those modeles were imported by typing the following code -;
+
+```
+from tkinter import messagebox, filedialog
+```
+
+**`Tkmacosx`**  was used as a Python library extension to the Tkinter module. This change backgraound color of the button on macOS after clicking on it. To access this extension, I used the following code-;
+
+```
+from tkmacosx import Button as button
+```
+
+**`Tkcalendas`**  is an other python module. It used to provide the Calendar and DateEntry widgets for Tkinter. It was imported by the following code -;
+```
+from tkcalendar import DateEntr
+```
+
+To plot and visualise data, I imported **`matplotlib`**  library together with **`pyplot`**  module. In order to avoid writing the library name on every call, the alias **`plt`**  has been chosen by using the following code -;
+
+```
+import matplotlib.pyplot as plt
+```
+
+To format the plot for display in a specific target application, such as Tkinter. I imported **`FigureCanvasTkAgg`**  in the following code -;
+
+```
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
+```
+
+The three other modules imported are ;
+
+- **`CSV`**  to deal will csv files,
+- **`SYS`**  to manipulate different parts of the Python Runtime Environment (like restarting the application) and,
+- **`OS`**  to provide a way of using operating system dependent functionality (like importing and exporting data).
+
 
 ## Screenshots
 
